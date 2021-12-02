@@ -1,0 +1,16 @@
+[base]
+serverId = "1"
+RPCAddr = "localhost:3020"
+[bucket]
+num = 4
+channel = 1024
+room = 1024
+routineAmount = 32
+routineSize = 20
+[etcd]
+host = "localhost:2379"
+basePath = "/im"
+serverId = "1"
+serverPath = "logicRpc"
+[websocket]
+bind = "0.0.0.0:8911"
