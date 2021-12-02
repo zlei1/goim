@@ -1,0 +1,10 @@
+[base]
+RPCAddr = "localhost:3030"
+[redis]
+addr = "localhost:6379"
+password = ""
+db = 10
+[etcd]
+host = "localhost:2379"
+basePath = "/im"
+serverPath = "logicRpc"
