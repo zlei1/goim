@@ -1,5 +1,4 @@
 [base]
-RPCAddress = "localhost:3020"
 [redis]
 addr = "localhost:6379"
 password = ""

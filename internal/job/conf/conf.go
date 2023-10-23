@@ -25,7 +25,6 @@ func Init() (err error) {
 func Default() *Config {
 	return &Config{
 		Base: Base{
-			RPCAddr:  "localhost:3020",
 			PushChan: 2,
 			PushSize: 50,
 		},
@@ -39,7 +38,6 @@ type Config struct {
 }
 
 type Base struct {
-	RPCAddr  string
 	PushChan int
 	PushSize int
 }
