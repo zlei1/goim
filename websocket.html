@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>goim</title>
+    <script type="text/javascript">
+      function WebSocketTest() {
+        if ("WebSocket" in window) {
+          console.log("您的浏览器支持 WebSocket!");
+
+          // 打开一个 web socket
+          var ws = new WebSocket("ws://localhost:8911/ws");
+
+          ws.onopen = function() {
+            // Web Socket 已连接上，使用 send() 方法发送数据
+            var data = {
+              userId: 1,
+              roomId: 1
+            }
+            ws.send(JSON.stringify(data));
+            console.log("数据发送：", JSON.stringify(data));
+          };
+
+          ws.onmessage = function (evt) { 
+            var received_msg = evt.data;
+            alert(received_msg)
+          };
+
+          ws.onclose = function() { 
+            // 关闭 websocket
+            alert("连接已关闭..."); 
+          };
+        } else {
+          // 浏览器不支持 WebSocket
+          alert("您的浏览器不支持 WebSocket!");
+        }
+      }
+    </script>
+  </head>
+  <body onload="WebSocketTest()">
+  </body>
+</html>
