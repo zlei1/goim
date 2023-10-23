@@ -24,7 +24,7 @@ func InitLogicRpcServer(l *logic.Logic) {
 func createServer(addr string, l *logic.Logic) {
 	s := server.NewServer()
 	addRegistryPlugin(addr, s, l)
-	s.RegisterName(l.C.Etcd.ServerPath, &LogicRpcServer{l: l}, l.C.Etcd.ServerId)
+	s.RegisterName(l.C.Etcd.ServerPathLogic, &LogicRpcServer{l: l}, l.C.Base.ServerId)
 	s.Serve("tcp", addr)
 }
 

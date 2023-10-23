@@ -1,5 +1,5 @@
 [base]
-RPCAddr = "localhost:3030"
+RPCAddress = "localhost:3020"
 [redis]
 addr = "localhost:6379"
 password = ""
@@ -7,4 +7,4 @@ db = 10
 [etcd]
 host = "localhost:2379"
 basePath = "/im"
-serverPath = "logicRpc"
+serverPathComet = "cometRpc"

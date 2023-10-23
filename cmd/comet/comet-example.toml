@@ -1,16 +1,15 @@
 [base]
-serverId = "1"
-RPCAddr = "localhost:3020"
+RPCAddress = "localhost:3010"
 [bucket]
 num = 4
-channel = 1024
-room = 1024
+channelSize = 1024
+roomSize = 1024
 routineAmount = 32
 routineSize = 20
 [etcd]
 host = "localhost:2379"
 basePath = "/im"
-serverId = "1"
-serverPath = "logicRpc"
+serverPathComet = "cometRpc"
+serverPathLogic = "logicRpc"
 [websocket]
 bind = "0.0.0.0:8911"

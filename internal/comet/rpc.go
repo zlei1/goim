@@ -25,7 +25,7 @@ func (cmt *Comet) InitRpcServer() {
 func createServer(addr string, cmt *Comet) {
 	s := server.NewServer()
 	addRegistryPlugin(addr, s, cmt)
-	err := s.RegisterName(cmt.C.Etcd.ServerPath, &Rpc{cmt: cmt}, cmt.C.Etcd.ServerId)
+	err := s.RegisterName(cmt.C.Etcd.ServerPathComet, &Rpc{cmt: cmt}, cmt.C.Base.ServerId)
 	if err != nil {
 		panic(err)
 	}

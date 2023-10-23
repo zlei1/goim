@@ -9,13 +9,13 @@ import (
 )
 
 type Dao struct {
-	c *conf.Config
+	c     *conf.Config
 	Redis *redis.Client
 }
 
 func New(c *conf.Config) *Dao {
 	d := &Dao{
-		c: c,
+		c:     c,
 		Redis: newRedis(c.Redis),
 	}
 	return d

@@ -1,6 +1,6 @@
 [base]
 HttpAddr = "localhost:3000"
-RPCAddr = "localhost:3010"
+RPCAddress = "localhost:3030"
 [redis]
 addr = "localhost:6379"
 password = ""
@@ -8,5 +8,4 @@ db = 10
 [etcd]
 host = "localhost:2379"
 basePath = "/im"
-serverId = "1"
-serverPath = "logicRpc"
+serverPathLogic = "logicRpc"

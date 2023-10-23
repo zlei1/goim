@@ -13,12 +13,12 @@ var logicRpcClient client.XClient
 func (cmt *Comet) InitLogicRpcClient() {
 	d, _ := etcdClient.NewEtcdV3Discovery(
 		cmt.C.Etcd.BasePath,
-		cmt.C.Etcd.ServerPath,
+		cmt.C.Etcd.ServerPathLogic,
 		[]string{cmt.C.Etcd.Host},
 		false,
 		nil,
 	)
-	logicRpcClient = client.NewXClient(cmt.C.Etcd.ServerPath, client.Failtry, client.RandomSelect, d, client.DefaultOption)
+	logicRpcClient = client.NewXClient(cmt.C.Etcd.ServerPathLogic, client.Failtry, client.RandomSelect, d, client.DefaultOption)
 }
 
 func LogicConnect(req *proto.ConnectReq) (err error) {

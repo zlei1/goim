@@ -8,7 +8,7 @@ import (
 
 var (
 	confPath string
-	Conf *Config
+	Conf     *Config
 )
 
 func init() {
@@ -25,7 +25,7 @@ func Init() (err error) {
 func Default() *Config {
 	return &Config{
 		Base: Base{
-			RPCAddr: "localhost:3001",
+			RPCAddr:  "localhost:3020",
 			PushChan: 2,
 			PushSize: 50,
 		},
@@ -33,25 +33,25 @@ func Default() *Config {
 }
 
 type Config struct {
-	Base Base
-	Etcd Etcd
+	Base  Base
+	Etcd  Etcd
 	Redis Redis
 }
 
 type Base struct {
-	RPCAddr string
+	RPCAddr  string
 	PushChan int
 	PushSize int
 }
 
 type Etcd struct {
-	Host string
-	BasePath string
-	ServerPath string
+	Host            string
+	BasePath        string
+	ServerPathComet string
 }
 
 type Redis struct {
-	Addr string
+	Addr     string
 	Password string
-	DB int
+	DB       int
 }

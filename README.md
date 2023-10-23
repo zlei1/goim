@@ -27,9 +27,9 @@ mkdir target/
 cp cmd/logic/logic-example.toml target/logic.toml
 cp cmd/comet/comet-example.toml target/comet.toml
 cp cmd/job/job-example.toml target/job.toml
-GO111MODULE=on go -o target/logic cmd/logic/main.go
-GO111MODULE=on go -o target/comet cmd/comet/main.go
-GO111MODULE=on go -o target/job cmd/job/main.go
+GO111MODULE=on go build -o target/logic cmd/logic/main.go
+GO111MODULE=on go build -o target/comet cmd/comet/main.go
+GO111MODULE=on go build -o target/job cmd/job/main.go
 target/logic -conf=target/logic.toml
 target/comet -conf=target/comet.toml
 target/job -conf=target/job.toml

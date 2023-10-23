@@ -15,7 +15,7 @@ var (
 )
 
 func (j *Job) InitRpcClient() {
-	d, _ := etcdClient.NewEtcdV3Discovery(j.c.Etcd.BasePath, j.c.Etcd.ServerPath, []string{j.c.Etcd.Host}, false, nil)
+	d, _ := etcdClient.NewEtcdV3Discovery(j.c.Etcd.BasePath, j.c.Etcd.ServerPathComet, []string{j.c.Etcd.Host}, false, nil)
 	RpcClientList = make(map[string]client.XClient, len(d.GetServices()))
 
 	for _, cometConf := range d.GetServices() {
@@ -23,7 +23,7 @@ func (j *Job) InitRpcClient() {
 		serverId := cometConf.Value
 
 		d, _ := client.NewPeer2PeerDiscovery(cometConf.Key, "")
-		RpcClientList[serverId] = client.NewXClient(j.c.Etcd.ServerPath, client.Failover, client.RoundRobin, d, client.DefaultOption)
+		RpcClientList[serverId] = client.NewXClient(j.c.Etcd.ServerPathComet, client.Failover, client.RoundRobin, d, client.DefaultOption)
 	}
 }
 
@@ -31,10 +31,10 @@ func (j *Job) InitRpcClient() {
 func (j *Job) Push(serverId string, userId int64, msg []byte) {
 	req := &proto.PushMsgReq{
 		UserId: userId,
-		Msg: proto.Msg {
-			Ver: 1,
+		Msg: proto.Msg{
+			Ver:       1,
 			Operation: define.OP_SINGLE_SEND,
-			Body: msg,
+			Body:      msg,
 		},
 	}
 	reply := &proto.SuccessReply{}
@@ -49,10 +49,10 @@ func (j *Job) Push(serverId string, userId int64, msg []byte) {
 func (j *Job) BroadcastRoom(roomId int64, msg []byte) {
 	req := &proto.PushRoomMsgReq{
 		RoomId: roomId,
-		Msg: proto.Msg {
-			Ver: 1,
+		Msg: proto.Msg{
+			Ver:       1,
 			Operation: define.OP_ROOM_SEND,
-			Body: msg,
+			Body:      msg,
 		},
 	}
 	reply := &proto.SuccessReply{}
